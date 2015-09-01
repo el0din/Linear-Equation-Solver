@@ -1,0 +1,80 @@
+#include <stdio.h>
+
+int main(){
+printf("\nThis program solves linear equation in n variables.\nFirst enter the coefficients in equation 1 for e.g.\nIn equation 2a + 3b = 5, first enter 2 3 5.\n");
+int var,row,col,m,n;
+char e;
+for(;;){
+	printf("\nEnter the number of variables in the equation: ");
+	scanf("%d",&var);
+	double arrvar[var][var+1];
+	char c = 'a';
+
+	for(row=0;row<var;row++){
+		printf("Enter the coefficients of equation %d separated by space: \n",row+1);
+		for(col=0;col<var+1;col++){
+			scanf("%lf",&arrvar[row][col]);
+			}
+		}
+
+	printf("\n");
+	for(row = 0; row<var ; row++){
+		printf("%g%c",arrvar[row][0],c);
+		for(col = 1; col<var; col++){
+			c = (int)c + 1;
+			printf(" + %g%c",arrvar[row][col],c);
+			
+		}
+		printf(" = %g\n",arrvar[row][var]);
+		 c = 'a';
+	}
+	printf("\n");
+
+	int i,j,k,l;
+		for(i=0;i<var;i++){
+			if(arrvar[i][i] != 0){
+				for(j=var;j>=0;j--){
+					arrvar[i][j] /= arrvar[i][i];
+					
+					}
+
+				for(k=0;k<var;k++){
+					if (k!=i){
+					for(l=var;l>=0;l--){
+						if (l!=i){
+							arrvar[k][l] = arrvar[k][l] - ((arrvar[k][i]/arrvar[i][i])*(arrvar[i][l]));
+							}
+
+						}arrvar[k][i] = 0;}
+					}
+			}}
+
+	for(row = 0; row<var ; row++){
+		for(col = 0,i=0; col<var; col++){
+			if(arrvar[row][col]!=0)
+				{i = 1;
+				break;}
+		}
+		if(i==0)
+			if(arrvar[row][var] == 0)
+				{printf("Infinite Solutions.\n\n");
+				return 0;}
+			else
+				{printf("No Solution\n\n");
+				return 0;}
+
+		}
+
+
+	for(row = 0, c = 'a';row<var;row++){
+		printf("%c : %g\n",c,arrvar[row][var]);
+		c = (int)c + 1;
+		}
+	printf("\nDo you want to quit. Enter y for yes else n.");
+	scanf(" %c",&e);
+	if(e == 'y')
+		{printf("\nThanks for using. Developed by Elodin (Mas1erElodin@gmail.com).\n");
+			break;}
+	printf("Continuing.\n");
+	}
+return 0;}
