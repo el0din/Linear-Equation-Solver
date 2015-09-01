@@ -73,7 +73,7 @@ for(;;){
 	printf("\nDo you want to quit. Enter y for yes else n.");
 	scanf(" %c",&e);
 	if(e == 'y')
-		{printf("\nThanks for using. Developed by Elodin (Mas1erElodin@gmail.com).\n");
+		{printf("\nThanks for using. Developed by El0din (helloel0din@gmail.com).\n");
 			break;}
 	printf("Continuing.\n");
 	}
